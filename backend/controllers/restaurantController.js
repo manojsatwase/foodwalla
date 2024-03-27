@@ -1,15 +1,21 @@
 const asyncHandler = require('express-async-handler');
 const Restaurant = require('../models/restaurantModel');
+const cloudinary = require("cloudinary");
 
 exports.createRestaurant = asyncHandler(async(req,res)=>{
-
         try {
-          const { name, address, location } = req.body;
-
+          const { name, business_email,logo,address,pincode,location} = req.body;
+         
+         //   const myCloud = await cloudinary.v2.uploader.upload(logo,{
+         //     folder:"restaurant-logo"
+         //  });
           // Create a new restaurant instance
-          const newRestaurant = new Restaurant({
+          const newRestaurant = await Restaurant.create({
             name,
+            business_email,
+            logo,
             address,
+            pincode,
             location: {
               type: 'Point',
               coordinates: [location.longitude, location.latitude],
