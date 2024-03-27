@@ -1,0 +1,110 @@
+body {
+    font-family: "Lato", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #232323;
+  }
+
+  .userProfile {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    position: absolute;
+    right: 10.5%;
+  }
+
+  .messageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .messageText {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 4rem;
+    color: chocolate;
+    margin-bottom: 4rem;
+  }
+  
+  .messageLink {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  
+  .dropdown-toggle:empty::after {
+    display: none;
+  }
+  
+  
+  .cart-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+  .cart-link:hover {
+    color: orange; 
+  }
+  .cart-link .bi-cart {
+    font-size: 1.5rem; 
+  }
+
+  .restaurant-container{
+    min-height: 85.5vh;
+    .restaurant-banner{
+      background: url('../assets/img/banner.png') center/cover no-repeat;
+      height: 40vh;
+      div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        height: 100%;
+      }
+    }
+
+    .heading{
+      text-align: center;
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      font-weight: 300;
+    }
+  }
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
+
+  
+@media screen and (max-width: 767px) {
+  .userProfile{
+    display: none;
+  }
+  .userInfo{
+    .messageText{
+      font-size: 1rem;
+      padding: 0rem 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+  .nav-link{
+    padding: 0.5rem;
+  }
+  .restaurant-container{
+  .restaurant-banner{
+    height: 30vh;
+    div > h2{
+      font-size: 1rem;
+    }
+  }
+}
+}
