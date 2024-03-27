@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialUserState = {
+    visitInfo:null,
     loading: false,
     error: null,
     message:null
@@ -15,6 +16,7 @@ const initialUserState = {
       },
       fetchUserVisitSuccess: (state, action) => {
         state.loading = false;
+        state.visitInfo = action.payload.visitInfo;
         state.message = action.payload.message;
       },
       fetchUserVisitFailure: (state, action) => {
