@@ -1,7 +1,8 @@
+const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const cloudinary = require("cloudinary");
 
-exports.register = async (req, res) => {
+exports.register = asyncHandler(async (req, res) => {
     try {
         const { username,email,password,avatar,gender,dob } = req.body;
       
@@ -47,10 +48,10 @@ exports.register = async (req, res) => {
             message:error.message
         })
     }
-}
+})
 
 
-exports.login = async (req,res) => {
+exports.login = asyncHandler(async (req,res) => {
 
   try {
     const {email,password} = req.body;
@@ -92,9 +93,9 @@ exports.login = async (req,res) => {
         message:error
        })
   }
-}
+})
 
-exports.updatedPassword = async(req,res) => {
+exports.updatedPassword = asyncHandler(async(req,res) => {
     try {
         const user = await User.findById(req.user._id).select("+password");
         
@@ -129,9 +130,9 @@ exports.updatedPassword = async(req,res) => {
             message:error.message
         })
     }
-}
+})
 
-exports.myProfile = async (req,res) => {
+exports.myProfile = asyncHandler(async (req,res) => {
     try{
         const user = await User.findById(req.user._id);
 
@@ -146,9 +147,9 @@ exports.myProfile = async (req,res) => {
             message:error.message
         })
     }
-}
+})
 
-exports.logout = async(req,res) => {
+exports.logout = asyncHandler(async(req,res) => {
     try{
         res.status(200).cookie("token",null,{
             expires:new Date(Date.now()),
@@ -163,9 +164,9 @@ exports.logout = async(req,res) => {
             message:error.message
         })
     }
-}
+})
 
-exports.getAllUsers = async(req,res) => {
+exports.getAllUsers = asyncHandler(async(req,res) => {
     try {
         // req.params.id => '/users/:id',
         // req.query.username => '/users?username=${username}'
@@ -186,11 +187,11 @@ exports.getAllUsers = async(req,res) => {
             error:error.message
         })
     }
-}
+})
 
 
 // Helper function to update user's avatar
-const updateAvatar = async (user, avatar) => {
+const updateAvatar = asyncHandler(async (user, avatar) => {
     try {
         await cloudinary.v2.uploader.destroy(user.avatar.public_id);
         const myCloud = await cloudinary.v2.uploader.upload(avatar, { folder: "avatars" });
@@ -199,10 +200,10 @@ const updateAvatar = async (user, avatar) => {
     } catch (error) {
         throw new Error("Error updating avatar");
     }
-};
+})
 
 
-exports.updateProfile = async (req, res) => {
+exports.updateProfile = asyncHandler(async (req, res) => {
     try {
         const { username, email, avatar, gender, dob } = req.body;
         const user = await User.findById(req.user._id);
@@ -239,5 +240,5 @@ exports.updateProfile = async (req, res) => {
             message: error.message 
         });
     }
-};
+})
 
