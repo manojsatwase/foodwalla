@@ -16,7 +16,7 @@ const initialUserState = {
       },
       fetchUserVisitSuccess: (state, action) => {
         state.loading = false;
-        state.visitInfo = action.payload.visitInfo;
+        state.visitInfo = action.payload;
         state.message = action.payload.message;
       },
       fetchUserVisitFailure: (state, action) => {
