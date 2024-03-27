@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const userVisitInfoSchema = new mongoose.Schema({
     name: {
         type: String,
-        unique: true,
         required: [true, "Please enter Name"],
     },
     age: {
@@ -14,6 +13,10 @@ const userVisitInfoSchema = new mongoose.Schema({
         type: String,
         enum: ["male", "female"],
         required: [true, "Please enter Gender"],
+    },
+    distance:{
+        type:Number,
+        required: [true, 'Please enter the distance'],
     },
     location: {
         type: {
@@ -26,11 +29,11 @@ const userVisitInfoSchema = new mongoose.Schema({
             default: [0, 0], 
         },
     },
-    restaurant: {
+    restaurantId: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Restaurant',
         required: true,
-    },
+    }],
     created_at: {
         type: Date,
         default: Date.now,
