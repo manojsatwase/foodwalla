@@ -5,8 +5,8 @@ const { isAuthenticated, restrictToAdmin } = require('../utils/auth');
 
 const router = express();
 
-router.route("/restaurants/create").post(isAuthenticated,restrictToAdmin, createRestaurant);
+router.route("/restaurants/create").post(isAuthenticated,restrictToAdmin,createRestaurant);
 router.route("/restaurants").get(getAllRestaurants);
-router.route("/nearest-restaurants").get(findNearestRestaurant);
+router.route("/nearest-restaurants").post(findNearestRestaurant);
 
 module.exports = router;
