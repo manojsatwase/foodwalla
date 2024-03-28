@@ -10,7 +10,7 @@ const UserInfo = () => {
 
   return (
     <div className="userInfo">
-      {!restaurants?.length ? <UserInfoForm /> : (
+      {!message?.length ? <UserInfoForm /> : (
         <>
           <MessageComponent message={message} />
           <Restaurant restaurants={restaurants} />
