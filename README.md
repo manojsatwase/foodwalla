@@ -33,22 +33,26 @@ create restaurant :
       method : post 
       url  :  localhost:5000/api/v1/restaurants/create
       body : {
-          "name": "food walli",
-          "business_email": " bhainsdehi@gmail.com",
-          "logo": {
-            "public_id": "abc123",
-            "url": "logo url"
-          },
-          "address": "Bhainsdehi, Madhya Pradesh ",
-          "pincode": 460220,
-          "distance": 500, // Distance in meters (example: 500 meters)
-          "location": {
-                "latitude":21.643702,
-                "longitude":21.643702
+              "name": "egg Wall",
+              "business_email":"egg@gmail.com",
+              "logo": {
+                "public_id": "abc123",
+                "url": "logo url"
+              },
+              "address": "egg amravati, maharashtra",
+              "rating": 4,
+              "price": 400,
+               "description": "This is a Edge Wall restaurant . Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "pincode": 444705,
+              "distance": 500, // Distance in meters (example: 500 meters)
+              "openAt": "08:00",
+              "location": {
+                    "latitude":23.291671374452143,
+                    "longitude":77.59502748692049
+                }
             }
-}
 
-           
+
 Response :
 {
     "success": true,
@@ -68,8 +72,55 @@ Response :
     }
 }
 
+------------------------------------------
+GET ALL NEAREST RESTUARANTS
 
+REQUEST : 
+   method:post,
+   url:localhost:5000/api/v1/nearest-restaurants 
+   body:{
+    "distance":500, // dynamic pass
+    "location": {
+        "longitude":21.643702,
+        "latitude":21.643702
+    }  
+}
 
+RESPONSE:
+{
+    "success": true,
+    "restaurant": [
+        {
+            "_id": "6604d0de3016a7776888b6a1",
+            "name": "Biryani Wall",
+            "business_email": "biryaniwall@gmail.com",
+            "logo": {
+                "public_id": "abc123",
+                "url": "logo url"
+            },
+            "description": "This is a Biryani Wall restaurant . Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "rating": 4.5,
+            "price": 300,
+            "address": "Bhainsdehi, Madhya Pradesh",
+            "pincode": 444604,
+            "openAt": "08:00",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    21.643702,
+                    21.643702
+                ]
+            },
+            "__v": 0,
+            "dist": {
+                "calculated": 0
+            }
+        }
+    ]
+}
+
+-------------------------------------------
+User Visit Restuarant
 REQUEST :
 method:post
 url:localhost:5000/api/v1/saveuserapi
@@ -78,9 +129,10 @@ Body:
     "name": "manoj satwase",
     "age": "28",
     "gender": "male",
+     "distance":5000,
     "location": {
-        "latitude":22.7195687,
-        "longitude":75.8577258
+        "longitude":23.2402017,
+        "latitude": 77.5390127
     }
 }
 
@@ -125,3 +177,33 @@ Create API for Find Nearest Store
 
 1. Search nearby store using Latitude and Lonitude.
 2. Fetch all store according by nearest.
+
+
+
+User Login and Registration
+
+router.route("/register")
+      .post(register);
+router.route("/login")
+      .post(login);
+router.route("/logout")
+      .get(logout)
+router.route("/me")
+      .get(isAuthenticated,myProfile)
+      .post(isAuthenticated,updateProfile);
+router.route("/update-password")
+       .post(isAuthenticated,updatedPassword);
+router.route("/admin/users")
+       .get(isAuthenticated,restrictToAdmin,getAllUsers);
+
+---------------------------------------------------------
+
+Restaurant :-
+
+router.route("/restaurants/create").post(createRestaurant);
+router.route("/restaurants").get(getAllRestaurants);
+router.route("/nearest-restaurants").post(findNearestRestaurant);
+
+
+Save User Visit Restaurant
+router.route("/saveuserapi").post(createUserVisitInfo);
