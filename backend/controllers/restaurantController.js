@@ -4,7 +4,7 @@ const cloudinary = require("cloudinary");
 
 exports.createRestaurant = asyncHandler(async(req,res)=>{
         try {
-          const { name, business_email,logo,address,pincode,location} = req.body;
+          const { name, business_email,logo,description,rating,price,address,openAt,pincode,location} = req.body;
          
          //   const myCloud = await cloudinary.v2.uploader.upload(logo,{
          //     folder:"restaurant-logo"
@@ -15,7 +15,11 @@ exports.createRestaurant = asyncHandler(async(req,res)=>{
             business_email,
             logo,
             address,
+            rating,
             pincode,
+            price,
+            openAt,
+            description,
             location: {
               type: 'Point',
               coordinates: [location.longitude, location.latitude],
