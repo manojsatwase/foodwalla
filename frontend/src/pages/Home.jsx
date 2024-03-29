@@ -1,5 +1,5 @@
 import React from 'react'
-import UserInfo from '../components/UserInfo'
+import UserInfoForm from '../forms/UserInfoForm';
 
 const Home = () => {
   return (
@@ -11,9 +11,8 @@ const Home = () => {
         </div>
       </section>
       <section>
-        <h1 className='heading'>Restaurant Visit Form</h1>
-          <UserInfo />
-       </section>
+         <UserInfoForm/> 
+      </section>
     </main>
   )
 }
