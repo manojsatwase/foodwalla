@@ -13,7 +13,8 @@ const Menu = lazy(() => import('./pages/Menu'));
 const Cart = lazy(() => import('./pages/Cart'));
 const Orders = lazy(() => import('./pages/Orders'));
 const MyProfile = lazy(()=> import('./pages/MyProfile'));
-
+const Restaurant = lazy(()=> import('./pages/Restaurant'));
+const Restaurants = lazy(()=>import('./pages/Restaurants'));
 
 const LazyLoadingComponent = ({ component: LazyComponent }) => {
   return (
@@ -47,20 +48,25 @@ export const appRouter = createBrowserRouter([
       }, {
         path: "/register",
         element: <LazyLoadingComponent component={Register} />
-      }, {
+      },{
         path: "/menu",
         element: <LazyLoadingComponent component={Menu} />
       },{
-        path: "/menu/cart",
+        path: "/cart",
         element: <LazyLoadingComponent component={Cart} />
-      },{
+      }, {
           path: "/orders",
           element: <LazyLoadingComponent component={Orders} />
       },{
         path: "/myprofile",
         element: <LazyLoadingComponent component={MyProfile} />
-      }
-      
+      },{
+        path:"/restaurant/:id",
+        element:<LazyLoadingComponent component={Restaurant} />
+      },{
+        path:"/restaurants",
+        element:<LazyLoadingComponent component={Restaurants} />
+      },
     ],
     errorElement: <ErrorComponent />
   }
