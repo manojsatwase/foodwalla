@@ -1,27 +1,32 @@
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import useLocationFeature from '../hooks/useLocationFeature';
 import useForm from '../hooks/useForm';
 import { saveUserAPI } from '../api/featchUserVisitApi';
 
-const UserInfoForm = () => {
-  const [formData, handleChange] = useForm({ name: '', age: '', gender: '' });
 
-  const loading = useSelector(state=>state.userVisitInfo?.loading)
+const UserInfoForm = () => {
+  const [formData, handleChange] = useForm({ name: '', age: '', gender: '' , distance:''});
+
+  const loading = useSelector(state=>state.userVisitInfo?.loading);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {location,error} = useLocationFeature();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(saveUserAPI({...formData,location}));
+    navigate('/restaurants');
   };
 
   return (
     <Container className="d-flex justify-content-center align-items-center">
       <Row>
         <Col>
+        <h1 className='heading'>Restaurant Visit Form</h1>
           <Form className="userInfo" onSubmit={handleSubmit}>
             <Form.Group controlId="formName" className='mb-2'>
               <Form.Label>Name</Form.Label>
@@ -66,9 +71,22 @@ const UserInfoForm = () => {
               </Form.Control>
             </Form.Group>
 
+            <Form.Group controlId="formAge" className='mb-2'>
+              <Form.Label>Distance</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter the KM distance"
+                name="distance"
+                value={formData.distance}
+                onChange={handleChange}
+                style={{ width: '30vw' }}
+                required
+              />
+            </Form.Group>
+
              {error && <p>{error}</p>}
 
-            <Button variant="primary" disabled={loading} type="submit">
+            <Button variant="primary" className='mt-2' disabled={loading} type="submit">
               Submit
             </Button>
           </Form>
