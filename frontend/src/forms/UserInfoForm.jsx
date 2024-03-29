@@ -27,7 +27,7 @@ const UserInfoForm = () => {
       <Row>
         <Col>
         <h1 className='heading'>Restaurant Visit Form</h1>
-          <Form className="userInfo" onSubmit={handleSubmit}>
+          <Form className="userInfoForm" onSubmit={handleSubmit}>
             <Form.Group controlId="formName" className='mb-2'>
               <Form.Label>Name</Form.Label>
               <Form.Control
