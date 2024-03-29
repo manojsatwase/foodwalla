@@ -6,6 +6,7 @@ const {EARTH_RADIUS_METERS } = require('../utils/constant');
 exports.createUserVisitInfo = asyncHandler(async (req, res) => {
     try {
         const { name, age, gender,distance = 500, location } = req.body;
+        
         // Assuming location is provided as an object with 'longitude' and 'latitude' properties
         const longitude = parseFloat(location.longitude);
         const latitude = parseFloat(location.latitude)
@@ -66,7 +67,7 @@ exports.createUserVisitInfo = asyncHandler(async (req, res) => {
         }
         return res.status(200).json({
             success: true,
-            message: 'No nearby restaurants found within 500m of your location.',
+            message: `No nearby restaurants found within ${distance} KM of your location.`,
         });
     } catch (error) {
         console.error(error);
