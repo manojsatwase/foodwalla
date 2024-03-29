@@ -1,97 +1,131 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 body {
-    font-family: "Lato", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    color: #232323;
-  }
-  .userInfo{
-    height: 100%;
-    margin-bottom: 4rem;
-  }
-  .userProfile {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    position: absolute;
-    right: 10.5%;
-  }
+  font-family: "Lato", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #232323;
+}
 
-  .messageContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .messageText {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    margin: 0.5rem 0;
-    color: chocolate;
-  }
-  
-  .messageLink {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  
-  .dropdown-toggle:empty::after {
-    display: none;
-  }
-  
-  
-  .cart-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s ease;
-  }
-  .cart-link:hover {
+.userProfile {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: absolute;
+  right: 10.5%;
+}
+.userInfoForm{
+  height: 100%;
+  margin-bottom: 4rem;
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+.messageText {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0.5rem 0;
+  color: chocolate;
+}
+}
+
+.nav-link{
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+  &:hover {
     color: orange; 
   }
-  .cart-link .bi-cart {
+  .bi-cart {
     font-size: 1.5rem; 
   }
+}
+.active{
+  color: orange; 
+  font-weight: bold;
+}
 
-  .restaurant-container{
-    min-height: 85.5vh;
-    .restaurant-banner{
-      background: url('../assets/img/banner.png') center/cover no-repeat;
-      height: 40vh;
-      div{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        height: 100%;
-      }
+.restaurant-container{
+  min-height: 85.5vh;
+  .restaurant-banner{
+    background: url('../assets/img/banner.png') center/cover no-repeat;
+    height: 40vh;
+    div{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      height: 100%;
     }
-    .restaurantCard{
-      border-radius: 1rem;
-      transition: all 0.5s linear;
+    
+  }
+  .heading{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    font-weight: 300;
+  }
+  
+} 
+
+.restaurants{
+  margin-bottom: 4rem;
+  .restaurantCard{
+    border-radius: 1rem;
+    transition: all 0.5s linear;
+
+      .card{
+      &:hover{
+        border: none;
+        border-color: rgb(232, 232, 232);
+      box-shadow: rgba(28, 28, 28, 0.12) 0px 0.4rem 1.8rem;
+      cursor: pointer;
+      }
+
+      .card-header{
+        border-radius: 1rem 1rem 0rem 0rem;
+        transition: all 0.5s linear;
+        overflow: hidden;
+        padding: 0;
+      }
+
+      .card-body{
+        padding: 1rem;
+      }
+      .star_img {
+        width: 23px;
+        height: 23px;
+        padding-bottom: 0.3rem;
+        margin-left:0.5rem;
+      }
+      
       img{
         border-radius: 1rem 1rem 0 0;
+        transition: all 0.5s linear;
+        &:hover{
+          transform: scale(1.1);
+        }
       }
-      &:hover{
-        border-color: rgb(232, 232, 232);
-        box-shadow: rgba(28, 28, 28, 0.12) 0px 0.4rem 1.8rem;
-        box-sizing: border-box;
-        cursor: pointer;
-      }
-    }
-    .heading{
-      text-align: center;
-      font-size: 1.5rem;
-      margin-top: 1rem;
-      font-weight: 300;
     }
   }
+  
+}
 
+.dropdown-toggle:empty::after {
+  display: none;
+}
 footer{
     position: fixed;
     bottom: 0;
@@ -103,7 +137,7 @@ footer{
   .userProfile{
     display: none;
   }
-  .userInfo{
+  .userInfoForm{
     .messageText{
       font-size: 1rem;
       padding: 0rem 2rem;
@@ -122,3 +156,4 @@ footer{
   }
 }
 }
+
